@@ -1,0 +1,295 @@
+#contenedor{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template:
+    "redes" 50px
+    "menu" 70px
+    "banner" 800px
+    "bienvenida" auto
+    "ofrecemos" auto
+    "accion" auto
+    "productos" auto
+    "teem" auto
+    "pie" auto/1fr;
+}
+
+#datos{
+    grid-area: redes;
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#dir{
+    width: 60%;
+}
+
+#dir p{
+    color: #ccc;
+}
+
+#redes{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#redes span{
+    color: #ccc;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+#redes span:hover{
+    filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow);
+    color: yellow;
+}
+
+#cabecera {
+    grid-area: menu;
+    display: flex;
+    justify-content: flex-start; /* Alinea todo a la izquierda (logo + texto) */
+    align-items: center;         /* Centra verticalmente el logo y el texto */
+    position: relative;
+    padding: 0 20px;             /* Un pequeño margen a los lados */
+}
+
+/* Estilo del logo */
+.logo {
+    width: 80px;                 /* Tamaño fijo para el logo */
+    height: auto;                /* Mantiene la proporción */
+    margin-right: 15px;          /* ESPACIO PEQUEÑO entre el logo y el texto */
+    margin-left: 0;              /* Quitamos el margen izquierdo extra */
+}
+
+/* Estilo del texto (H2) */
+#cabecera h2 {
+    width: auto;                 /* Quitamos el 100% para que no ocupe toda la línea */
+    margin: 0;                   /* Quitamos los márgenes grandes de antes */
+    text-align: left;
+    font-size: 1.5rem;           /* Ajusta este tamaño a tu gusto */
+    color: #00bfff;              /* Color azul celeste */
+}
+
+
+#check:checked ~.menu{
+    left: 0;
+}
+
+#check{
+    display: none;
+}
+
+.icon-menu{
+    color: deepskyblue;
+    font-size: 2rem;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.icon-menu:hover{
+    color: darkblue;
+}
+
+.menu{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 70px;
+    left:-100%;
+    background-color: rgba(0,0,0, .9);
+    transition: 1s ease;
+    z-index: 12;
+}
+
+.menu li{
+    width: 100%;
+    border-bottom:1px solid rgba(255, 255, 255, .2);
+    list-style: none;
+}
+
+.menu li a{
+    text-decoration: none;
+    display: block;
+    line-height: 9.5;
+    text-align: center;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.menu li a.active,li a:hover{
+    background-color: deepskyblue;
+    color: black;    
+}
+
+#banner{
+    grid-area: banner;
+    overflow: hidden;
+}
+
+.slider{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.contenido-slider{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink:0;
+}
+
+.contenido-slider h2{
+    color: yellow;
+    margin-left: 50px;
+    font-size: 2rem;
+}
+
+.contenido-slider p{
+    font-size: 14pt;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.contenido-slider a{
+    background-color: dodgerblue;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-left: 50px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+}
+
+.contenido-slider a:hover{
+    background-color: darkblue;
+}
+
+#caja1{
+    background-image: url(../img/banner.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#caja2{
+    background-image: url(../img/banner2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#caja3{
+    background-image: url(../img/banner3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#caja1{
+    background-image: url(../img/banner.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+<!-- -->
+/* 1. CONTENEDOR DEL BANNER */
+#banner {
+    grid-area: banner;
+    width: 100%;
+    height: 800px; /* Altura fija para el banner */
+    overflow: hidden; /* Muy importante: Oculta lo que se salga de la caja */
+    position: relative;
+}
+
+/* 2. CONTENEDOR DEL SLIDER (Las 3 imágenes juntas) */
+.slider {
+    width: 100%;
+    height: 100%;
+    display: flex; /* Pone las imágenes una al lado de la otra */
+    
+    /* ¡LA MAGIA! Aquí se activa el movimiento automático */
+    animation: moverBanner 15s infinite alternate ease-in-out;
+}
+
+.slider {
+    animation: moverBanner 8s infinite alternate ease-in-out;
+}
+@keyframes moverBanner {
+    0% { margin-left: 0%; }
+    20% { margin-left: 0%; }    /* Se ve solo un poco la 1ra */
+    25% { margin-left: -100%; } 
+    45% { margin-left: -100%; } /* Se ve un poco la 2da */
+    50% { margin-left: -200%; }
+    100% { margin-left: -200%; }/* Se ve un poco más la 3ra */
+}
+
+/* 3. CADA IMAGEN (Ocupa el 100% de la pantalla) */
+.contenido-slider {
+    width: 100%;       /* Cada imagen ocupa todo el ancho */
+    height: 100%;      /* Cada imagen ocupa todo el alto */
+    flex-shrink: 0;    /* Evita que las imágenes se aplasten */
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 4. DEFINICIÓN DE LA ANIMACIÓN (Keyframes) */
+@keyframes moverBanner {
+    0% { margin-left: 0%; }        /* Empieza mostrando la imagen 1 */
+    30% { margin-left: 0%; }       /* Mantiene la imagen 1 visible */
+    
+    35% { margin-left: -100%; }    /* Se desliza a la imagen 2 (-100%) */
+    65% { margin-left: -100%; }    /* Mantiene la imagen 2 visible */
+    
+    70% { margin-left: -200%; }    /* Se desliza a la imagen 3 (-200%) */
+    100% { margin-left: -200%; }   /* Mantiene la imagen 3 visible */
+}
+
+/* 5. TUS IMÁGENES DE FONDO (Ya las tenías, pero las pongo aquí para confirmar) */
+#caja1 {
+    background-image: url(../img/banner.jpg);
+}
+#caja2 {
+    background-image: url(../img/banner2.jpg);
+}
+#caja3 {
+    background-image: url(../img/banner3.jpg);
+}
+
+/* 6. ESTILO DEL TEXTO DENTRO DEL BANNER */
+.contenido-slider div {
+    margin-left: 80px;
+}
+.contenido-slider h2 {
+    color: yellow;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); /* Sombra para leer mejor */
+}
+.contenido-slider p {
+    color: white;
+    font-size: 1.2rem;
+    margin: 15px 0 30px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+.contenido-slider a {
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: 2px solid white;
+    transition: 0.3s;
+}
+.contenido-slider a:hover {
+    background-color: darkblue;
+}
